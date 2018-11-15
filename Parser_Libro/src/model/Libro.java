@@ -9,7 +9,8 @@ import java.io.Serializable;
  */
 public class Libro implements Serializable {
 	private static final long serialVersionUID = 1L;
-	String titulo = null, autor = null, editor = null;
+	String titulo = null, editor = null;
+	String autores = null;
 	int numPag;
 	int anyo;
 		 
@@ -27,21 +28,35 @@ public class Libro implements Serializable {
 				int anyoDePublicacion) {
 		super();
 		this.titulo = titulo;
-		this.autor = autor;
 		this.editor = editor;
 		this.numPag = numeroDePaginas;
-		this.anyo = anyoDePublicacion;
+		this.anyo = anyoDePublicacion;	
+		this.autores = autor;
 	}
 	
 	/**
 	 * Método toString con todos los campos de libros.
 	 */
 	public String toString() {
-		String datos = "Título: " + titulo + "\nAutor: " + autor + "\nEditor: " + editor + "\nPáginas: " + numPag
-				+ "\nPublicación: " + anyo;
+		String datos = "Título: " + titulo + "\nAutor: " + autores + "\nEditor: " + editor + 
+				"\nPáginas: " + numPag + "\nPublicación: " + anyo;
 		
 		return datos;
-	}		 
+	}	
+	
+//	public StringBuilder listaAutores(ArrayList<String> noms){
+//		StringBuilder sb = new StringBuilder();
+//		if(autores != null) {
+//		java.util.Iterator<String> it = noms.iterator();
+//		
+//		while(it.hasNext()) {
+//			sb.append(it.next());
+//		}
+//		} else sb.append("no entra");
+//		
+//		return sb;
+//		
+//	}
 		
 		/**
 		 * 
@@ -59,21 +74,6 @@ public class Libro implements Serializable {
 			this.titulo = titulo;
 		}
 		
-		/**
-		 * 
-		 * @return autor
-		 */
-		public String getAutor() {
-			return autor;
-		}
-		
-		/**
-		 * 
-		 * @param autor
-		 */
-		public void setAutor(String autor) {
-			this.autor = autor;
-		}
 		
 		/**
 		 * 
@@ -121,6 +121,14 @@ public class Libro implements Serializable {
 		 */
 		public void setAnyoDePublicacion(int anyoDePublicacion) {
 			this.anyo = anyoDePublicacion;
+		}
+
+		public String getAutores() {
+			return autores;
+		}
+
+		public void setAutores(String autores) {
+			this.autores = autores;
 		}
 		
 

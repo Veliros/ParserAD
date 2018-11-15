@@ -83,19 +83,29 @@ public class Parser {
 	  * @return
 	  */
 	 private Libro getLibro(Element libro){
-	    String nombre = getTextValue(libro,"nombre"),
-	           editor = getTextValue(libro,"editor"),
-	           titulo = getTextValue(libro,"titulo");
+	    String editor = getTextValue(libro,"editor"),
+	    	   titulo = getTextValue(libro,"titulo");
+	    	
+	    
+	    NodeList autores = libro.getElementsByTagName("nombre");
+	    String lista = "";
+	    
+	    for (int i = 0; i < autores.getLength(); i++) { 
+	    	Element e = (Element) autores.item(i);
+	    	lista += "- " + e.getFirstChild().getNodeValue() + " -";        	
+	    }
+	    
 
 	    int paginas = getIntValue(libro,"paginas"),
 	    	anyo = Integer.parseInt(getAtributeValue(libro,"titulo"));  
 	    
-	    //Creamos un nuevo Libro con los elementos leídos del nodo
-	    Libro lib = new Libro(nombre,editor,titulo,paginas,anyo);
+	    Libro lib = new Libro(titulo, lista, editor, paginas, anyo);
 
-	    return lib;    
+	    return lib; 
+		 
+		 }
 	    
-	  }
+	  
 	  
 	  /**
 	   *  Valor dentro de la respectiva etiqueta.
